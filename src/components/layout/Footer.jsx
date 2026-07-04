@@ -19,14 +19,33 @@ export default function Footer() {
                     {/* Brand */}
                     <div>
                         <h3 style={{
-                            fontSize: '1.25rem',
-                            fontWeight: 600,
+                            fontSize: '1.5rem',
+                            fontWeight: 700,
                             letterSpacing: '0.05em',
                             textTransform: 'uppercase',
+                            marginBottom: '0.35rem',
+                        }}>
+                            Morero Media
+                        </h3>
+                        <p style={{
+                            fontSize: '0.7rem',
+                            fontWeight: 300,
+                            letterSpacing: '0.16em',
+                            textTransform: 'uppercase',
+                            color: 'var(--color-text-muted)',
                             marginBottom: '1rem',
                         }}>
-                            Juvane Moonsami
-                        </h3>
+                            powered by{' '}
+                            <span style={{
+                                fontFamily: 'var(--font-signature)',
+                                fontSize: '1.15rem',
+                                letterSpacing: '0.01em',
+                                textTransform: 'none',
+                                color: 'var(--color-accent)',
+                            }}>
+                                Juvane Moonsami
+                            </span>
+                        </p>
                         <p className="text-muted" style={{ fontSize: '0.875rem', maxWidth: '280px' }}>
                             Professional photography for brands and lifestyle moments that matter.
                         </p>
@@ -85,7 +104,7 @@ export default function Footer() {
                     fontSize: '0.75rem',
                     color: 'var(--color-text-muted)',
                 }}>
-                    © {currentYear} Juvane Moonsami. All rights reserved.
+                    © {currentYear} Morero Media. All rights reserved.
                 </div>
             </div>
         </footer>

@@ -60,20 +60,49 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             style={{
-              fontFamily: 'var(--font-signature)',
-              fontSize: 'clamp(3.5rem, 12vw, 7rem)',
-              fontWeight: 400,
-              letterSpacing: '0.02em',
-              marginBottom: '1.5rem',
+              fontFamily: 'var(--font-heading)',
+              fontSize: 'clamp(3rem, 11vw, 7rem)',
+              fontWeight: 700,
+              letterSpacing: '0.04em',
+              textTransform: 'uppercase',
+              lineHeight: 0.95,
+              marginBottom: '1rem',
             }}
           >
-            Juvane Moonsami
+            Morero Media
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.35 }}
+            style={{
+              fontFamily: 'var(--font-heading)',
+              fontSize: '0.9rem',
+              fontWeight: 300,
+              letterSpacing: '0.28em',
+              textTransform: 'uppercase',
+              color: 'var(--color-text-muted)',
+              marginBottom: '2rem',
+            }}
+          >
+            powered by{' '}
+            <span style={{
+              fontFamily: 'var(--font-signature)',
+              fontSize: '2rem',
+              letterSpacing: '0.01em',
+              textTransform: 'none',
+              color: 'var(--color-accent)',
+              verticalAlign: 'middle',
+            }}>
+              Juvane Moonsami
+            </span>
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
             className="text-muted"
             style={{
               fontSize: '1.125rem',
