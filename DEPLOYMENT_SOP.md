@@ -1,14 +1,14 @@
-# Deployment SOP: Juvane Moonsami Portfolio
+# Deployment SOP: Morero Media Portfolio
 
-This document outlines the standard operating procedure for deploying the Juvane Moonsami portfolio website to Coolify using Nixpacks.
+This document outlines the standard operating procedure for deploying the Morero Media portfolio website (photography by Juvane Moonsami) to Coolify using a Dockerfile build.
 
 ---
 
 ## 1. Project Assumptions
 
-- **Framework**: Next.js 16.1.6 (Node.js 20+)
+- **Framework**: Next.js 16.1.6 (Node.js 20+), `output: 'standalone'`
 - **Deployment Target**: Production VPS via Coolify
-- **Build Pack**: Nixpacks
+- **Build Pack**: Dockerfile (multi-stage, `node:20-alpine`, non-root `nextjs` user, port 3000)
 - **Repo Host**: GitHub
 
 ---
@@ -19,15 +19,22 @@ This document outlines the standard operating procedure for deploying the Juvane
     - Source: GitHub Repository
     - Branch: `main` (or default branch)
 2.  **Build Configuration**:
-    - **Build Pack**: Nixpacks
-    - **Build Command**: `npm run build`
-    - **Start Command**: `npm run start`
-    - **Install Command**: `npm ci` (managed by Nixpacks usually, but verify)
+    - **Build Pack**: Dockerfile
+    - **Dockerfile Location**: `/Dockerfile` (repo root)
+    - **Exposed Port**: `3000`
+    - No build/start command overrides needed — the Dockerfile owns the whole flow
+      (`npm ci` → `npm run build` → `node server.js` from the standalone output).
 3.  **Environment Variables**:
     - Add any required secrets (e.g., API keys) in the Coolify dashboard.
+    - Build-time vars must be marked **"Available at Buildtime"** in Coolify so they
+      reach the `builder` stage.
 4.  **Networking**:
     - Attach domain: `https://moreromedia.co.za` (or staging URL)
     - Enable HTTPS (Let's Encrypt).
+
+> **Migrating from Nixpacks?** In the existing Coolify app, switch **Build Pack** from
+> Nixpacks to **Dockerfile**, clear any custom build/start commands, confirm the exposed
+> port is `3000`, then redeploy. Domain, env vars and HTTPS cert are preserved.
 
 ---
 
@@ -52,6 +59,10 @@ npm run build
 
 # 5. (Optional) Start production server locally
 npm run start
+
+# 6. (Optional) Verify the Docker image builds and boots exactly as Coolify will
+docker build -t morero-media .
+docker run --rm -p 3000:3000 morero-media   # then open http://localhost:3000
 ```
 
 ### 3.2 Deploy (Repo + Coolify)
@@ -86,7 +97,7 @@ git push origin main
     - Home Page
     - Work / Case Studies (Dynamic Routing)
     - Contact Form
-3.  **Check Assets**: Ensure images and fonts (Great Vibes, Inter) load correctly.
+3.  **Check Assets**: Ensure images and fonts (Oswald, Inter, Great Vibes) load correctly.
 4.  **Check SEO**: Verify meta tags are present (View Source).
 
 ---
