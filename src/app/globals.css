@@ -18,7 +18,7 @@
   --color-border: #2a2a2a;
 
   /* Typography */
-  --font-heading: var(--font-inter);
+  --font-heading: var(--font-oswald);
   --font-body: var(--font-inter);
   --font-signature: var(--font-great-vibes);
 
@@ -106,7 +106,18 @@ h6 {
   font-family: var(--font-heading);
   font-weight: 600;
   line-height: 1.2;
+  letter-spacing: 0.01em;
   margin: 0;
+}
+
+/* Lifestyle theme keeps the softer Playfair headings, no extra tracking */
+[data-theme="lifestyle"] h1,
+[data-theme="lifestyle"] h2,
+[data-theme="lifestyle"] h3,
+[data-theme="lifestyle"] h4,
+[data-theme="lifestyle"] h5,
+[data-theme="lifestyle"] h6 {
+  letter-spacing: normal;
 }
 
 a {
@@ -160,11 +171,11 @@ img {
   justify-content: center;
   gap: 0.5rem;
   padding: 0.875rem 2rem;
-  font-family: var(--font-body);
-  font-size: 0.875rem;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   border: none;
   border-radius: 0;
   cursor: pointer;

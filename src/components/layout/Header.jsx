@@ -48,12 +48,39 @@ export default function Header() {
             }}>
                 {/* Logo */}
                 <Link href="/" style={{
-                    fontFamily: 'var(--font-signature)',
-                    fontSize: '1.75rem',
-                    fontWeight: 400,
-                    letterSpacing: '0.02em',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    lineHeight: 1,
                 }}>
-                    Juvane Moonsami
+                    <span style={{
+                        fontFamily: 'var(--font-heading)',
+                        fontSize: '1.5rem',
+                        fontWeight: 700,
+                        letterSpacing: '0.05em',
+                        textTransform: 'uppercase',
+                    }}>
+                        Morero Media
+                    </span>
+                    <span style={{
+                        fontFamily: 'var(--font-heading)',
+                        fontSize: '0.6rem',
+                        fontWeight: 300,
+                        letterSpacing: '0.16em',
+                        textTransform: 'uppercase',
+                        color: 'var(--color-text-muted)',
+                        marginTop: '0.25rem',
+                    }}>
+                        powered by{' '}
+                        <span style={{
+                            fontFamily: 'var(--font-signature)',
+                            fontSize: '1rem',
+                            letterSpacing: '0.01em',
+                            textTransform: 'none',
+                            color: 'var(--color-accent)',
+                        }}>
+                            Juvane Moonsami
+                        </span>
+                    </span>
                 </Link>
 
                 {/* Navigation */}
